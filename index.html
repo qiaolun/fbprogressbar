@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>FBP Test</title>
+<script type="text/javascript" 
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="fbprogress.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+});
+</script>
+<style type="text/css">
+button {
+    background-color: #cccccc;
+}
+button.on {
+    background-color: #009900;
+}
+</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '384550828223442', // App ID
+      channelUrl : '//http://qiao-fmac1.local/~qiao/fbp/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+    FB.login(function(response) {
+      // handle the response
+      if (response.authResponse) {
+        console.log(response);
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Good to see you, ' + response.name + '.');
+        });
+        
+        var uid = response.authResponse.userID;
+        FBProgress.init('fb-wrap', {
+            continousDays: 3,
+            uid : uid,
+            fanPageId : '199223433514943'
+        });
+        $("button").click(function(){
+            var step = this.id.substring(6);
+            FBProgress.open(step); 
+        });
+
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    }, {scope: 'email,user_likes'});
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+<h1>FBP Test</h1>
+
+<button id="check_start" type="button">check start</button>
+<button id="check_like" type="button">check like</button>
+<button id="check_continous" type="button">check continous</button>
+<button id="check_invite" type="button">check invite</button>
+
+<div id="fbp-wrap"></div>
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+a<br />
+</body>
+</html>
